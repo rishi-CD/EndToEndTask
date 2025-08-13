@@ -16,7 +16,7 @@ export class Register {
   password: string;
 
   @Column()
-  confirm_password: string;
+  confirmPassword: string;
 
   @OneToOne(() => Login, (login) => login.register, { onDelete: "CASCADE" })
   @JoinColumn({ name: "id" })

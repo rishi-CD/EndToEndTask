@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+import { AppDataSource } from "../dbconfigs/database";
+import { Login } from "../entities/Login.model";
 import {getAllLoginsService,getLoginByIdService,updateLoginService,deleteLoginService,loginUserService,} from "../services/Login.service";
 
 export const getAllLogins = async (req: Request, res: Response) => {
@@ -39,13 +41,25 @@ export const deleteLogin = async (req: Request, res: Response) => {
     res.status(400).json({ error: String(error) });
   }
 };
-
 export const loginUser = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
-    const result = await loginUserService(email, password);
-    res.json(result);
+
+    if (!email || !password) {
+      return res.status(400).json({ success: false, message: "Email and password are required" });
+    }
+    
+
+    const loginRepo = AppDataSource.getRepository(Login);
+    const user = await loginRepo.findOne({ where: { email, password } });
+
+    if (!user) {
+      return res.status(401).json({ success: false, message: "Invalid email or password" });
+    }
+
+    return res.json({ success: true, message: "Login successful" });
   } catch (error) {
-    res.status(401).json({ error: String(error) });
+    console.error(error);
+    return res.status(500).json({ success: false, message: "Server error" });
   }
 };

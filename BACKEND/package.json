@@ -1,12 +1,12 @@
 {
   "name": "meal-tracker-backend",
   "version": "1.0.0",
-  "main": "dist/server.js",
+  "main": "dist/app.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev server.ts",
+    "dev": "ts-node-dev app.ts",
     "build": "tsc",
-    "start": "node dist/BACKEND/server.js"
+    "start": "node dist/BACKEND/app.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

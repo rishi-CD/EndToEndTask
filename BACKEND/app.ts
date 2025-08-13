@@ -1,23 +1,33 @@
 import express from "express";
-import bodyParser from "body-parser";
 import cors from "cors";
-import routes from "./src/routes/Index.routes";
+import { AppDataSource } from "./src/dbconfigs/database";
+import loginRoutes from "./src/routes/Login.routes";
+import registerRoutes from "./src/routes/Register.routes";
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use("/api", routes);
 
 app.use(cors({
-  origin: "http://localhost:5173", 
+  origin: "*", 
   methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type"]
+  allowedHeaders: ["Content-Type"],
 }));
 
-app.get("/", (req, res) => {
-  res.json({ message: "Meal Tracker Backend (TypeORM) running" });
-});
+app.use(express.json());
 
-export default app;
+
+app.use("/api/login", loginRoutes);
+app.use("/api/register", registerRoutes);
+
+
+AppDataSource.initialize()
+  .then(() => {
+    console.log("Database connected");
+
+    app.listen(5000, () => {
+      console.log("Server running on http://localhost:5000");
+    });
+  })
+  .catch((err) => {
+    console.error("Database connection error:", err);
+  });

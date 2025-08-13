@@ -14,9 +14,10 @@ export const createRegisterService = async (
   name: string,
   email: string,
   password: string,
-  confirm_password: string
+  confirmPassword: string
 ) => {
-  if (password !== confirm_password) throw new Error("Passwords do not match");
+  console.log(password, confirmPassword)
+  if (password !== confirmPassword) throw new Error("Passwords do not match");
 
   const loginRepo = AppDataSource.getRepository(Login);
   const registerRepo = AppDataSource.getRepository(Register);
@@ -32,7 +33,7 @@ export const createRegisterService = async (
     name,
     email,
     password,
-    confirm_password,
+    confirmPassword,
   });
   await registerRepo.save(register);
 
@@ -44,7 +45,7 @@ export const updateRegisterService = async (
   name?: string,
   email?: string,
   password?: string,
-  confirm_password?: string
+  confirmPassword?: string
 ) => {
   const registerRepo = AppDataSource.getRepository(Register);
   const loginRepo = AppDataSource.getRepository(Login);
@@ -52,14 +53,14 @@ export const updateRegisterService = async (
   const register = await registerRepo.findOneBy({ id });
   if (!register) throw new Error("User not found");
 
-  if (password && confirm_password && password !== confirm_password) {
+  if (password && confirmPassword && password !== confirmPassword) {
     throw new Error("Passwords do not match");
   }
 
   register.name = name ?? register.name;
   register.email = email ?? register.email;
   register.password = password ?? register.password;
-  register.confirm_password = confirm_password ?? register.confirm_password;
+  register.confirmPassword = confirmPassword ?? register.confirmPassword;
   await registerRepo.save(register);
 
   const login = await loginRepo.findOneBy({ id });
