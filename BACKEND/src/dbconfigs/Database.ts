@@ -1,8 +1,8 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Login } from "../entities/Login.model";
-import { Register } from "../entities/Register.model";
-import { AddFood } from "../entities/addFood.model";
+import { Login } from "../entities/Loginmodel";
+import { Register } from "../entities/Registermodel";
+import { AddFood } from "../entities/Addfoods";
 import dotenv from "dotenv";
 dotenv.config();
 

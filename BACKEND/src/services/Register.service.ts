@@ -1,6 +1,6 @@
-import { AppDataSource } from "../dbconfigs/database";
-import { Login } from "../entities/Login.model";
-import { Register } from "../entities/Register.model";
+import { AppDataSource } from "../dbconfigs/Database";
+import { Login } from "../entities/Loginmodel";
+import { Register } from "../entities/Registermodel";
 
 export const getAllRegistersService = async () => {
   return await AppDataSource.getRepository(Register).find({ order: { id: "ASC" } });

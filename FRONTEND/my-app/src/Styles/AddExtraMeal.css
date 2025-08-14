@@ -1,0 +1,91 @@
+.modal-overlay {
+  position: fixed;
+  z-index: 1001;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(50, 80, 50, 0.17);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: #a9e9b6;
+  border-radius: 16px;
+  padding: 24px 28px 18px 28px;
+  box-shadow: 0 6px 22px #b0e0b0cc;
+  min-width: 440px;
+  min-height: 150px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.modal-title {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.close {
+  font-size: 1.3em;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.group {
+  margin-bottom: 14px;
+  display: flex;
+  
+  flex-direction: column;
+}
+
+.group label {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 2px;
+  color: #26672d;
+}
+
+.group input {
+  border: none;
+  border-radius: 8px;
+  padding: 18px 12px;
+  background: #eafdea;
+  font-size: 1em;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.cancel {
+  background: white;
+  border: 1px solid #198638;
+  color: #198638;
+  padding: 5px 18px;
+  border-radius: 7px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.save {
+  background: #218c38;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 6px 21px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.save[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

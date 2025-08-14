@@ -5,52 +5,61 @@ import "./Login.css";
 import loginImage from "../assets/LoginLogo.png";
 import logoImage from "../assets/TitleLogo.png";
 
-const Login: React.FC = () => {
+const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/login", { email, password });
+      const res = await axios.post("http://localhost:5000/api/login", {
+        email,
+        password,
+     });
+     console.log(res.data)
       if (res.data.success) {
-        navigate("/home");
+        localStorage.setItem("userId",res.data.user.id);
+        navigate("/dashboard");
       } else {
-        alert("Login failed");
+        alert(res.data.message || "Login failed");
       }
     } catch (err) {
-      console.error(err);
       alert("Login failed");
+      console.error(err);
     }
   };
 
   return (
     <div className="login-container">
       <div className="login-left">
-        <img src={loginImage} alt="Fitness" />
+        <img src={loginImage} alt="Login" />
       </div>
       <div className="login-right">
         <div className="login-box">
           <div className="logo">
-            <img src={logoImage} alt="Logo" style={{ width: "40px" }} />
-            <h1>FitMeal Partner</h1>
+            <img src={logoImage} className="logo-img" alt="Logo" />
+            <h1>Meal Tracker</h1>
           </div>
           <h2>Login</h2>
-          <input
-            type="email"
-            placeholder="E-mail"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button onClick={handleLogin}>Login</button>
+          <form onSubmit={handleLogin}>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">Login</button>
+          </form>
           <p>
-            Don't have an account? <Link to="/register">Register</Link>
+            Don't have an account?{" "}
+            <Link to="/register">Register</Link>
           </p>
         </div>
       </div>
@@ -59,3 +68,4 @@ const Login: React.FC = () => {
 };
 
 export default Login;
+

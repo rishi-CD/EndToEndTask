@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
-import { Login } from "./Login.model";
+import { Login } from "./Loginmodel";
 
 export type MealType = "snack" | "lunch" | "breakfast" | "dinner";
 
@@ -20,7 +20,7 @@ export class AddFood {
   @Column({ type: "float" })
   taken_weight_grams: number;
 
-  @Column({ type: "enum", enum: ["snack", "lunch", "breakfast", "dinner"] })
+  @Column()
   meal_type: MealType;
 
   @ManyToOne(() => Login, (login) => login.foods, { onDelete: "CASCADE" })

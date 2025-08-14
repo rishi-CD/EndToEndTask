@@ -1,5 +1,5 @@
 import { Entity, PrimaryColumn, Column, OneToOne, JoinColumn } from "typeorm";
-import { Login } from "./Login.model";
+import { Login } from "./Loginmodel";
 
 @Entity({ name: "RegisterTable" })
 export class Register {

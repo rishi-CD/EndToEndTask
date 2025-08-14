@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { AppDataSource } from "../dbconfigs/database";
-import { Login } from "../entities/Login.model";
+import { AppDataSource } from "../dbconfigs/Database";
+import { Login } from "../entities/Loginmodel";
 import {getAllLoginsService,getLoginByIdService,updateLoginService,deleteLoginService,loginUserService,} from "../services/Login.service";
 
 export const getAllLogins = async (req: Request, res: Response) => {
@@ -15,7 +15,7 @@ export const getAllLogins = async (req: Request, res: Response) => {
 export const getLoginById = async (req: Request, res: Response) => {
   try {
     const user = await getLoginByIdService(Number(req.params.id));
-    if (!user) return res.status(404).json({ error: "Login not found" });
+    if (!user) return res.status(404).json({ error: "User not exist" });
     res.json(user);
   } catch (error) {
     res.status(500).json({ error: String(error) });
@@ -46,7 +46,7 @@ export const loginUser = async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ success: false, message: "Email and password are required" });
+      return res.status(400).json({ success: false, message: "Fill  the Email and password" });
     }
     
 
@@ -54,12 +54,12 @@ export const loginUser = async (req: Request, res: Response) => {
     const user = await loginRepo.findOne({ where: { email, password } });
 
     if (!user) {
-      return res.status(401).json({ success: false, message: "Invalid email or password" });
+      return res.status(401).json({ success: false, message: "Invalid email and password" });
     }
 
-    return res.json({ success: true, message: "Login successful" });
+    return res.json({ success: true, message: "Login Successful",user });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ success: false, message: "Server error" });
+    return res.status(500).json({ success: false, message: " error" });
   }
 };

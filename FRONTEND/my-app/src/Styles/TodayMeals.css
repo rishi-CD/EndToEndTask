@@ -1,0 +1,63 @@
+.extra-meal-box {
+  background: #bfdfbf;
+  border: 2px solid #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.extra-meal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.header-title {
+  background: #1a531b;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.header-date {
+  background: #1a531b;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #2e7d32;
+  font-size: 0.9rem;
+}
+
+.extra-meal-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.meal-category-box {
+  background: #ffffff;
+  border: solid;
+  box-sizing: 2px;
+  color: #bfdfbf;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.category-label {
+  font-size: 0.95rem;
+  color: #025f07;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.item-name,
+.item-quantity,
+.item-calories {
+  font-size: 20px;
+  color: #0e6912;
+  margin-bottom: 4px;
+}

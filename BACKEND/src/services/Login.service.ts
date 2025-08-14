@@ -1,5 +1,5 @@
-import { AppDataSource } from "../dbconfigs/database";
-import { Login } from "../entities/Login.model";
+import { AppDataSource } from "../dbconfigs/Database";
+import { Login } from "../entities/Loginmodel";
 
 export const getAllLoginsService = async () => {
   return await AppDataSource.getRepository(Login).find({ order: { id: "ASC" } });

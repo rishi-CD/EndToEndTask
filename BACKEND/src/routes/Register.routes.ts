@@ -5,7 +5,7 @@ import {
   createRegister,
   updateRegister,
   deleteRegister
-} from "../controllers/RegisterControllers";
+} from "../controllers/Registercontrollers";
 
 const router = Router();
 

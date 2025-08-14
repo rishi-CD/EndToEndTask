@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { AppDataSource } from "../dbconfigs/database";
-import { Register } from "../entities/Register.model";
+import { AppDataSource } from "../dbconfigs/Database";
+import { Register } from "../entities/Registermodel";
 import {getAllRegistersService,getRegisterByIdService,createRegisterService,updateRegisterService, deleteRegisterService,} from "../services/Register.service";
 
 export const getRegisters = async (req: Request, res: Response) => {
@@ -15,10 +15,10 @@ export const registerUser = async (req: Request, res: Response) => {
   try {
       const { name, email, password, confirmPassword } = req.body;
     if (!name || !email || !password || !confirmPassword) {
-      return res.status(400).json({ error: "All fields are required" });
+      return res.status(400).json({ error: "Fill all inputs" });
     }
     if (password !== confirmPassword) {
-      return res.status(400).json({ error: "Error: Passwords do not match" });
+      return res.status(400).json({ error: " Passwords didn't match" });
     }
     const registerRepo = AppDataSource.getRepository(Register);
     const newUser = registerRepo.create({
@@ -30,9 +30,9 @@ export const registerUser = async (req: Request, res: Response) => {
 
     await registerRepo.save(newUser);
 
-    res.status(201).json({ message: "User registered successfully" });
+    res.status(201).json({ message: " registered successfully" });
   } catch (error) {
-    console.error("Error in registerUser:", error);
+    console.error("Can't register:", error);
     res.status(500).json({ error: "Server error" });
   }
 };
@@ -40,7 +40,7 @@ export const registerUser = async (req: Request, res: Response) => {
 export const getRegisterById = async (req: Request, res: Response) => {
   try {
     const register = await getRegisterByIdService(Number(req.params.id));
-    if (!register) return res.status(404).json({ error: "Register not found" });
+    if (!register) return res.status(404).json({ error: "Registeration Invalid" });
     res.json(register);
   } catch (error) {
     res.status(500).json({ error: String(error) });
@@ -76,7 +76,7 @@ export const updateRegister = async (req: Request, res: Response) => {
 export const deleteRegister = async (req: Request, res: Response) => {
   try {
     await deleteRegisterService(Number(req.params.id));
-    res.json({ message: "Deleted successfully" });
+    res.json({ message: "Data removed" });
   } catch (error) {
     res.status(400).json({ error: String(error) });
   }

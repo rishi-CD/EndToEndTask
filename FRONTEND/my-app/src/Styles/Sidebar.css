@@ -1,0 +1,49 @@
+.sidebar {
+  width: 180px;
+  background: #b2ddb2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 18px 8px 0 18px;
+  min-height: 100vh;
+}
+
+.sidebar .logo {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.sidebar nav a {
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #195e19;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.sidebar nav .active {
+  background: #459145;
+  color: white;
+}
+
+.sidebar .signout {
+  margin-top: auto;
+  margin-bottom: 24px;
+  width: 90%;
+  border: 1px solid #459145;
+  color: #195e19;
+  border-radius: 8px;
+  background: #d0ebda;
+  padding: 8px;
+  cursor: pointer;
+}

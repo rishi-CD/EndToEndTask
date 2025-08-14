@@ -1,8 +1,10 @@
 import express from "express";
 import cors from "cors";
-import { AppDataSource } from "./src/dbconfigs/database";
+import { AppDataSource } from "./src/dbconfigs/Database";
 import loginRoutes from "./src/routes/Login.routes";
 import registerRoutes from "./src/routes/Register.routes";
+import Addfoods from "./src/routes/Addfood.routes";
+
 
 const app = express();
 
@@ -18,6 +20,7 @@ app.use(express.json());
 
 app.use("/api/login", loginRoutes);
 app.use("/api/register", registerRoutes);
+app.use("/api/addfood",Addfoods)
 
 
 AppDataSource.initialize()

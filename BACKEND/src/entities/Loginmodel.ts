@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, OneToMany } from "typeorm";
-import { Register } from "./Register.model";
-import { AddFood } from "./addFood.model";
+import { Register } from "./Registermodel";
+import { AddFood } from "./Addfoods";
 
 @Entity({ name: "LoginTable" })
 export class Login {

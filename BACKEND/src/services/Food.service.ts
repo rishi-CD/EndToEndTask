@@ -1,7 +1,7 @@
-import { AppDataSource } from "../dbconfigs/database";
-import { AddFood } from "../entities/addFood.model";
-import { Login } from "../entities/Login.model";
-import { MealType } from "../entities/addFood.model";
+import { AppDataSource } from "../dbconfigs/Database";
+import { AddFood } from "../entities/Addfoods";
+import { Login } from "../entities/Loginmodel";
+import { MealType } from "../entities/Addfoods";
 
 export const getAllFoodsService = async () => {
   return await AppDataSource.getRepository(AddFood).find({
@@ -11,7 +11,8 @@ export const getAllFoodsService = async () => {
 
 export const getFoodsByUserService = async (uniquekey: number) => {
   return await AppDataSource.getRepository(AddFood).find({
-    where: { uniquekey },
+    where:{ login: { id: uniquekey } },
+     relations: ["login"],
   });
 };
 

@@ -5,7 +5,7 @@ import {
   updateLogin,
   deleteLogin,
   loginUser
-} from "../controllers/LoginController";
+} from "../controllers/Logincontroller";
 
 const router = Router();
 
