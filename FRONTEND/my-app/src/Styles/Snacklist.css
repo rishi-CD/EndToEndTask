@@ -1,0 +1,110 @@
+.all-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding: 24px 12px;
+  justify-content: center;
+  background: #f3fdf7;
+}
+
+.summary-container {
+  background: #e7faec;
+  border-radius: 16px;
+  box-shadow: 0px 4px 20px #b2ddb2cc;
+  padding: 28px 24px 18px 24px;
+  min-width: 300px;
+  max-width: 370px;
+  width: 100%;
+  margin: 0 0 12px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #176b23;
+  font-size: 10px;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.summary-date .calendar-icon {
+  font-size: 1.1em;
+  margin-right: 3px;
+}
+
+.diet-chat {
+  background: #166B23;
+  color: #fff;
+  border-radius: 8px;
+  padding: 3px 14px;
+  font-size: 0.98em;
+}
+
+.summary-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.summary-time {
+  font-size: 1.07em;
+  color: #144817;
+  font-weight: 500;
+  min-width: 135px;
+  padding-top: 13px;
+}
+
+.meal-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.meal-box {
+  background: #fff;
+  border-radius: 13px;
+  box-shadow: 0 3px 10px #cbebc6cc;
+  padding: 24px 22px 20px 22px;
+  min-height: 110px;
+  font-size: 1.1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.meal-img {
+  width: 34px;
+  height: 34px;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 0 4px #caf3e0);
+}
+
+.meal-label {
+  font-weight: 700;
+  font-size: 1.2em;
+  color: #228e41;
+  margin-top: auto;
+}
+
+.calorie-section {
+  margin-top: 7px;
+}
+
+.cal-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  font-size: 1em;
+  color: #154c1f;
+}
+
+.cal-value {
+  font-weight: bold;
+  color: #186b23;
+}

@@ -1,0 +1,18 @@
+.dashboard-root {
+  display: flex;
+  min-height: 100vh;
+  background: #eaffea;
+}
+
+.dashboard-main {
+  display: inline;
+  max-width: 80%;
+  padding: 0 32px;
+  background: #f8fff6;
+}
+
+.meals-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
